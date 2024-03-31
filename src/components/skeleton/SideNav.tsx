@@ -1,13 +1,4 @@
-import {
-  Home,
-  LineChart,
-  Package,
-  Package2,
-  PanelLeft,
-  Settings,
-  ShoppingCart,
-  Users2,
-} from "lucide-react";
+import { Home, Package2, PanelLeft, Settings, Wallet } from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
@@ -17,8 +8,22 @@ import { Button } from "@/components/ui/button";
 
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Link } from "react-router-dom";
+import React from "react";
 
 const SideNav = () => {
+  const sideNavItems: { label: string; to: string; icon: JSX.Element }[] = [
+    {
+      label: "Home",
+      to: "/",
+      icon: <Home />,
+    },
+    {
+      label: "Budget",
+      to: "/",
+      icon: <Wallet />,
+    },
+  ];
+
   return (
     <>
       <Sheet>
@@ -37,41 +42,20 @@ const SideNav = () => {
               <Package2 className="h-5 w-5 transition-all group-hover:scale-110" />
               <span className="sr-only">Acme Inc</span>
             </Link>
-            <Link
-              to="/"
-              className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-            >
-              <Home className="h-5 w-5" />
-              Dashboard
-            </Link>
-            <Link
-              to="/"
-              className="flex items-center gap-4 px-2.5 text-foreground"
-            >
-              <ShoppingCart className="h-5 w-5" />
-              Orders
-            </Link>
-            <Link
-              to="/"
-              className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-            >
-              <Package className="h-5 w-5" />
-              Products
-            </Link>
-            <Link
-              to="/"
-              className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-            >
-              <Users2 className="h-5 w-5" />
-              Customers
-            </Link>
-            <Link
-              to="/"
-              className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-            >
-              <LineChart className="h-5 w-5" />
-              Settings
-            </Link>
+
+            {sideNavItems.map((sideNavItem, i) => (
+              <Link
+                key={i}
+                to={sideNavItem.to}
+                className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+              >
+                {React.cloneElement(sideNavItem.icon, {
+                  className: "h-5 w-5",
+                })}
+                <p>{sideNavItem.label}</p>
+                <span className="sr-only">{sideNavItem.label}</span>
+              </Link>
+            ))}
           </nav>
         </SheetContent>
       </Sheet>
@@ -85,66 +69,22 @@ const SideNav = () => {
             <Package2 className="h-4 w-4 transition-all group-hover:scale-110" />
             <span className="sr-only">Acme Inc</span>
           </Link>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Link
-                to="/"
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-              >
-                <Home className="h-5 w-5" />
-                <span className="sr-only">Dashboard</span>
-              </Link>
-            </TooltipTrigger>
-            <TooltipContent side="right">Dashboard</TooltipContent>
-          </Tooltip>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Link
-                to="/"
-                className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-accent-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-              >
-                <ShoppingCart className="h-5 w-5" />
-                <span className="sr-only">Orders</span>
-              </Link>
-            </TooltipTrigger>
-            <TooltipContent side="right">Orders</TooltipContent>
-          </Tooltip>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Link
-                to="/"
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-              >
-                <Package className="h-5 w-5" />
-                <span className="sr-only">Products</span>
-              </Link>
-            </TooltipTrigger>
-            <TooltipContent side="right">Products</TooltipContent>
-          </Tooltip>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Link
-                to="/"
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-              >
-                <Users2 className="h-5 w-5" />
-                <span className="sr-only">Customers</span>
-              </Link>
-            </TooltipTrigger>
-            <TooltipContent side="right">Customers</TooltipContent>
-          </Tooltip>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Link
-                to="/"
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-              >
-                <LineChart className="h-5 w-5" />
-                <span className="sr-only">Analytics</span>
-              </Link>
-            </TooltipTrigger>
-            <TooltipContent side="right">Analytics</TooltipContent>
-          </Tooltip>
+          {sideNavItems.map((sideNavItem, i) => (
+            <Tooltip key={i}>
+              <TooltipTrigger asChild>
+                <Link
+                  to={sideNavItem.to}
+                  className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+                >
+                  {React.cloneElement(sideNavItem.icon, {
+                    className: "h-5 w-5",
+                  })}
+                  <span className="sr-only">{sideNavItem.label}</span>
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent side="right">{sideNavItem.label}</TooltipContent>
+            </Tooltip>
+          ))}
         </nav>
         <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">
           <Tooltip>
