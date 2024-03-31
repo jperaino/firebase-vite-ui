@@ -1,5 +1,4 @@
 // See https://ariangarshi.medium.com/how-to-use-firebase-for-google-authentication-in-a-react-js-in-2022-78171a235404
-
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
