@@ -1,10 +1,15 @@
 import "./App.css";
-import Login from "./components/firebase-vite-ui/Login";
+import LoginPage from "./components/firebase-vite-ui/Login";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <div className="min-w-screen min-h-screen">
-      <Login />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
