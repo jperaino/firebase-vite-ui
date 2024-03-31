@@ -2,10 +2,11 @@ import "./App.css";
 import LoginPage from "./components/firebase-vite-ui/Auth/LoginPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import RequireAuth from "./components/firebase-vite-ui/Auth/RequireAuth";
-import Dashboard from "./dashboard/Dashboard";
+import DashboardPage from "./Dashboard/DashboardPage";
 import { AuthContextProvider } from "./components/firebase-vite-ui/Auth/AuthContext";
 import AppSkeleton from "./components/skeleton/AppSkeleton";
 import { TooltipProvider } from "./components/ui/tooltip";
+import BudgetPage from "./components/Budget/BudgetPage";
 
 function App() {
   return (
@@ -17,8 +18,9 @@ function App() {
               <Route path="/login" element={<LoginPage />} />
               <Route element={<RequireAuth />}>
                 <Route element={<AppSkeleton />}>
-                  <Route path="/" element={<Dashboard />} />
-                  <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/" element={<DashboardPage />} />
+                  <Route path="/dashboard" element={<DashboardPage />} />
+                  <Route path="/budget" element={<BudgetPage />} />
                 </Route>
               </Route>
             </Routes>
