@@ -18,6 +18,7 @@ function App() {
               <Route element={<RequireAuth />}>
                 <Route element={<AppSkeleton />}>
                   <Route path="/" element={<Dashboard />} />
+                  <Route path="/dashboard" element={<Dashboard />} />
                 </Route>
               </Route>
             </Routes>
