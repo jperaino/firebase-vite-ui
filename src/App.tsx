@@ -1,9 +1,9 @@
 import "./App.css";
-import LoginPage from "./components/firebase-vite-ui/LoginPage";
+import LoginPage from "./components/firebase-vite-ui/Auth/LoginPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import RequireAuth from "./components/firebase-vite-ui/RequireAuth";
+import RequireAuth from "./components/firebase-vite-ui/Auth/RequireAuth";
 import Dashboard from "./dashboard/Dashboard";
-import { AuthContextProvider } from "./components/firebase-vite-ui/AuthContext";
+import { AuthContextProvider } from "./components/firebase-vite-ui/Auth/AuthContext";
 import AppSkeleton from "./components/skeleton/AppSkeleton";
 import { TooltipProvider } from "./components/ui/tooltip";
 
