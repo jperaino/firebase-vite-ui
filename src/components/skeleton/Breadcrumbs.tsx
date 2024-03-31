@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Fragment } from "react";
 import { Link, useLocation } from "react-router-dom";
+import _ from "lodash";
 
 const Breadcrumbs = () => {
   const { pathname } = useLocation();
@@ -38,7 +39,7 @@ const Breadcrumbs = () => {
             {index === breadcrumbPaths.length - 1 ? (
               // Last item, use BreadcrumbPage
               <BreadcrumbItem>
-                <BreadcrumbPage>{breadcrumb.name}</BreadcrumbPage>
+                <BreadcrumbPage>{_.capitalize(breadcrumb.name)}</BreadcrumbPage>
               </BreadcrumbItem>
             ) : (
               // Not the last item, use BreadcrumbLink
