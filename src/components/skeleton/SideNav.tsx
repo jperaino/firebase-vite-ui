@@ -19,7 +19,7 @@ const SideNav = () => {
     },
     {
       label: "Budget",
-      to: "/",
+      to: "/budget",
       icon: <Wallet />,
     },
   ];
