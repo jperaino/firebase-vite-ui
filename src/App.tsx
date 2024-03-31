@@ -7,6 +7,7 @@ import { AuthContextProvider } from "./components/firebase-vite-ui/Auth/AuthCont
 import AppSkeleton from "./components/skeleton/AppSkeleton";
 import { TooltipProvider } from "./components/ui/tooltip";
 import BudgetPage from "./components/Budget/BudgetPage";
+import { BudgetContextProvider } from "./components/Budget/BudgetContext";
 
 function App() {
   return (
@@ -20,7 +21,14 @@ function App() {
                 <Route element={<AppSkeleton />}>
                   <Route path="/" element={<DashboardPage />} />
                   <Route path="/dashboard" element={<DashboardPage />} />
-                  <Route path="/budget" element={<BudgetPage />} />
+                  <Route
+                    path="/budget"
+                    element={
+                      <BudgetContextProvider>
+                        <BudgetPage />
+                      </BudgetContextProvider>
+                    }
+                  />
                 </Route>
               </Route>
             </Routes>
