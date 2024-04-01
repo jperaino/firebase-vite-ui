@@ -10,8 +10,12 @@ import {
 import { Progress } from "@/components/ui/progress";
 import Assistant from "./Assistant";
 import BudgetTable from "./BudgetTable";
+import { useBudgetContext } from "./BudgetContext";
+import { formatFinancial } from "@/lib/utils";
 
 const BudgetPage = () => {
+  const { monthlyCashflow } = useBudgetContext();
+
   return (
     <>
       <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
@@ -31,7 +35,9 @@ const BudgetPage = () => {
           <Card>
             <CardHeader className="pb-2">
               <CardDescription>Monthly Cashflow</CardDescription>
-              <CardTitle className="text-4xl">$1,329</CardTitle>
+              <CardTitle className="text-4xl">
+                {formatFinancial(monthlyCashflow)}
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-xs text-muted-foreground">
@@ -45,7 +51,9 @@ const BudgetPage = () => {
           <Card>
             <CardHeader className="pb-2">
               <CardDescription>Annual Cashflow</CardDescription>
-              <CardTitle className="text-3xl">$5,329</CardTitle>
+              <CardTitle className="text-3xl">
+                {formatFinancial(monthlyCashflow * 12)}
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-xs text-muted-foreground">

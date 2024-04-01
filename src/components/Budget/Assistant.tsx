@@ -11,7 +11,7 @@ import {
 
 const Assistant = () => {
   return (
-    <div className="relative flex h-full min-h-[50vh] flex-col rounded-xl p-4 bg-muted/100">
+    <div className="relative flex h-full min-h-[50vh] flex-col rounded-xl p-4 bg-slate-200">
       <Badge
         variant="outline"
         className="absolute right-3 top-3 inline-flex items-center"

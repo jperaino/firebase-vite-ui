@@ -9,6 +9,7 @@ import _ from "lodash";
 
 interface IBudgetContext {
   budget: BudgetCategory[] | null;
+  monthlyCashflow: number;
 }
 
 const BudgetContext = React.createContext<IBudgetContext | undefined>(
@@ -33,6 +34,7 @@ const BudgetContextProvider = (props: {
   children: JSX.Element | JSX.Element[];
 }) => {
   const [budget, setBudget] = useState<BudgetCategory[] | null>(null);
+  const [monthlyCashflow, setMonthlyCashflow] = useState<number>(0);
 
   useEffect(() => {
     // Get unique categories from subcategories
@@ -68,10 +70,23 @@ const BudgetContextProvider = (props: {
     setBudget(tempBudget);
   }, [mockSubCategories]);
 
+  useEffect(() => {
+    const tempCashflow = _.reduce(
+      budget,
+      (total, { amount }) => {
+        return total + amount;
+      },
+      0
+    );
+
+    setMonthlyCashflow(tempCashflow);
+  }, [budget]);
+
   return (
     <Provider
       value={{
         budget,
+        monthlyCashflow,
       }}
     >
       {props.children}

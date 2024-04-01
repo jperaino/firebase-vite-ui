@@ -34,7 +34,7 @@ export const mockSubCategories: BudgetSubCategory[] = [
   {
     name: "Utilities",
     category: mockCateogry1,
-    amount: 3850,
+    amount: 150,
     type: BudgetCategoryType.EXPENSE,
   },
   {
@@ -58,7 +58,7 @@ export const mockSubCategories: BudgetSubCategory[] = [
   {
     name: "Paycheck",
     category: mockCateogry3,
-    amount: 4500,
+    amount: 9000,
     type: BudgetCategoryType.INCOME,
   },
 ];
